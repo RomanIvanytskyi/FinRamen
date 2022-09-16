@@ -1,11 +1,16 @@
 const express = require("express");
-require('dotenv').config()
+require("dotenv").config();
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE).then(() => console.log("done"));
+mongoose.connect(process.env.DATABASE);
+const authRouter = require("./routes/authRouter");
+const transactionRouter = require("./routes/transactionRouter")
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.json());
+app.use("/transaction", transactionRouter);
+app.use("/auth", authRouter);
+
 const start = () => {
   try {
     app.listen(PORT, () => console.log(`server started ${PORT}`));
