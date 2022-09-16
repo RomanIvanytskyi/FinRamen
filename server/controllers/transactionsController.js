@@ -4,10 +4,7 @@ class transactionController {
   
   async create(req, res) {
     try {
-      const data ={
-      
-      }
-      await console.log(data)
+ 
     } catch (e) {
 
     }
