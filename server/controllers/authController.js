@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const generateAccessToken = (id) => {
@@ -22,7 +21,6 @@ class authController {
         password: hashPassword,
         email,
       });
-      console.log(user);
       await user.save();
 
       const token = generateAccessToken(user._id);
@@ -53,7 +51,6 @@ class authController {
   }
   async me(req, res) {
     const userId = await req.user.id;
-    console.log(req.user);
     const user = await User.findOne({ _id: userId });
     return res.send(user);
   }
