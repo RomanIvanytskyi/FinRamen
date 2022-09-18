@@ -20,6 +20,7 @@ const User = new Schema({
     type: String,
     unique: false,
     required: true,
+    default: "USD"
   },
 });
 
