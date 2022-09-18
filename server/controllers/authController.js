@@ -1,33 +1,63 @@
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const { validationResult } = require("express-validator");
+const { secret } = require("../config");
+const bcrypt = require("bcryptjs");
+
+const generateAccessToken = (id) => {
+  let payload = { id };
+  return jwt.sign(payload, secret, { expiresIn: "24h" });
+};
 
 class authController {
   async register(req, res) {
     try {
+      const { name, password, email} = req.body;
+      console.log(req.body)
+      const isExist = await User.findOne({ name });
+      if (isExist) {
+        return res.send({ message: "User already exist" });
+      }
+      const hashPassword = bcrypt.hashSync(password, 7);
       const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
+        name,
+        password: hashPassword,
+        email,
       });
+      console.log(user);
       await user.save();
-      res.send(user);
-      return;
+
+      const token = generateAccessToken(user._id);
+      return res.json({ token, userId: user._id });
     } catch (e) {
-      return res.send({ err: e });
+      res.send({ message: "Registration error"});
     }
   }
   async login(req, res) {
     try {
-      
-    } catch (e) {
+      const { password, email } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.send({ message: `Bad credentials` });
+      }
 
+      const validPassword = bcrypt.compareSync(password, user.password);
+      if (!validPassword) {
+        return res.send({ message: `Bad credentials` });
+      }
+
+      const token = generateAccessToken(user.id);
+
+      return res.json({ token });
+    } catch (e) {
+      res.send({ message: "Login error" });
     }
   }
   async me(req, res) {
-    try {
-      
-    } catch (e) {
-
-    }
+    const userId = await req.user.id;
+    console.log(req.user);
+    const user = await User.findOne({ _id: userId });
+    return res.send(user);
   }
 }
 
