@@ -1,19 +1,17 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
-const { secret } = require("../config");
 const bcrypt = require("bcryptjs");
 
 const generateAccessToken = (id) => {
   let payload = { id };
-  return jwt.sign(payload, secret, { expiresIn: "24h" });
+  return jwt.sign(payload, process.env.SECRET, { expiresIn: "24h" });
 };
 
 class authController {
   async register(req, res) {
     try {
       const { name, password, email} = req.body;
-      console.log(req.body)
       const isExist = await User.findOne({ name });
       if (isExist) {
         return res.send({ message: "User already exist" });

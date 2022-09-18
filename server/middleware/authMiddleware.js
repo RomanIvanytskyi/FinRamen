@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { secret } = require("../config");
+
 
 module.exports = function (req, res, next) {
   if (req.method === "OPTIONS") {
@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
   if (!token) {
     return res.send({ message: "No token" });
   }
-  const decodedData = jwt.verify(token, secret);
+  const decodedData = jwt.verify(token, process.env.SECRET);
   if (decodedData) {
     req.user = decodedData;
   } else {
