@@ -17,7 +17,6 @@ class authController {
     });
     try {
       const { name, password, email } = req.body;
-
       const isExist = await User.findOne({ name });
       if (isExist) {
         return res.send({ message: "User already exist" });
@@ -64,6 +63,38 @@ class authController {
     const userId = await req.user.id;
     const user = await User.findOne({ _id: userId });
     return res.send(user);
+  }
+  async editUserData(req, res) {
+    const { name, password, email, currency } = req.body;
+    const hashPassword = bcrypt.hashSync(password, 7);
+    const updated = await User.findOneAndUpdate(
+      { _id: req.body.id },
+      {
+        name: name,
+        password: hashPassword,
+        email: email,
+        currency: currency
+      },
+      {
+        upsert: true,
+      }
+    )
+      .then(() => {
+        res.status(201).json({
+          message: "Updated successfully!",
+        });
+      })
+      .catch((error) => {
+        return res.send({ err: e });
+      });
+  }
+  async deleteUser(req, res) {
+    try {
+      await User.deleteOne({ _id: req.body.id });
+      res.send("deleted " + req.body.id);
+    } catch (e) {
+      return res.send({ err: e });
+    }
   }
 }
 
