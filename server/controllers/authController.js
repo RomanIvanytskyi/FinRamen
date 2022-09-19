@@ -55,7 +55,7 @@ class authController {
     return res.send(user);
   }
   async editUserData(req, res) {
-    const { name, password, email } = req.body;
+    const { name, password, email, currency } = req.body;
     const hashPassword = bcrypt.hashSync(password, 7);
     const updated = await User.findOneAndUpdate(
       { _id: req.body.id },
@@ -63,6 +63,7 @@ class authController {
         name: name,
         password: hashPassword,
         email: email,
+        currency: currency
       },
       {
         upsert: true,
