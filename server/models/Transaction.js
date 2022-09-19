@@ -23,7 +23,7 @@ const Transaction = new Schema({
     required: false,
   },
   created:{
-    type: Date,
+    type: String,
     unique: false,
     required: true,
   }
