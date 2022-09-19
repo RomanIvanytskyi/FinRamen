@@ -10,7 +10,6 @@ const generateAccessToken = (id) => {
 
 class authController {
   async register(req, res) {
-    const { body } = req;
     const schema = Joi.object({
       name: Joi.string().min(3).required(),
       email: Joi.string().min(6).required().email(),
