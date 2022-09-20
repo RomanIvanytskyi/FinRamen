@@ -28,7 +28,7 @@ class transactionController {
         money_operations: req.body.money_operations,
         description: req.body.description,
         type: req.body.type,
-        created: now
+        created: req.body.created
       },
       {
         upsert: true,

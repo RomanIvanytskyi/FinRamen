@@ -17,6 +17,16 @@ export const loginAPI = (data) => {
   });
 };
 
+export const update = (data) => {
+    return axios.put("http://localhost:5000/auth/update", {
+      currency: data.currency,
+    });
+  };
+  export const deleteUser = (data) => {
+    return axios.delete("http://localhost:5000/auth/delete", {
+        id: data
+    });
+  };
 
 export const meAPI = (token) => {
   return axios.post("http://localhost:5000/auth/me", { token });
