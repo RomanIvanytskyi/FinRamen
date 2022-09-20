@@ -20,8 +20,7 @@ class transactionController {
     }
   }
   async update(req, res) {
-    let now = moment().format("DD/MM/YYYY HH:mm");
-    const updated = await Transaction.findOneAndUpdate(
+    await Transaction.findOneAndUpdate(
       { _id: req.body.id },
       {
         userId: req.body.userId,
@@ -39,7 +38,7 @@ class transactionController {
           message: "Updated successfully!",
         });
       })
-      .catch((error) => {
+      .catch((e) => {
         return res.send({ err: e });
       });
   }

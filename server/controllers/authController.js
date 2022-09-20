@@ -66,7 +66,7 @@ class authController {
   }
   async editUserData(req, res) {
     const { currency } = req.body;
-    const updated = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       { _id: req.body._id },
       {
         currency: currency
@@ -80,7 +80,7 @@ class authController {
           message: "Updated successfully!",
         });
       })
-      .catch((error) => {
+      .catch((e) => {
         return res.send({ err: e });
       });
   }
