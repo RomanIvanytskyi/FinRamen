@@ -4,6 +4,8 @@ import Costs from "../Pages/costManager";
 import Profile from "../Pages/profile";
 import Report from "../Pages/report";
 import SideBar from "../Components/sideBar";
+import { login } from "../store/reducers/reducer";
+import { connect } from "react-redux";
 
 const rootRouter = () => {
   return (
@@ -18,4 +20,8 @@ const rootRouter = () => {
     </div>
   );
 };
-export default rootRouter;
+const mapStateToProps = (state, ownProps) => ({
+  ...state,
+});
+
+export default connect(mapStateToProps, { login })(rootRouter);
