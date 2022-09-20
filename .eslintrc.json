@@ -1,0 +1,39 @@
+{
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "linebreak-style": [
+            "off"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ],
+        "arrow-body-style": [
+            "off"
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "tests/**/*.js"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ]
+    // "ignorePatterns": [
+    //     "public/v2/dist",
+    //     "docs/*"
+    // ]
+}
