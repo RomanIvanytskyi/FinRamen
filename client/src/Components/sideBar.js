@@ -2,14 +2,12 @@ import {
   ProSidebar,
   Menu,
   MenuItem,
-  SubMenu,
   SidebarHeader,
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import {
-  FaGithub,
   FaDollarSign,
   FaComment,
   FaHouseUser,
@@ -45,19 +43,19 @@ const SideBar = (colapsed) => {
         <SidebarContent>
           <Menu iconShape="circle">
             <MenuItem>
-              <FaDoorOpen /> Auth
+              <FaDoorOpen />Auth
               <Link to="/" />
             </MenuItem>
             <MenuItem>
-              <FaHouseUser /> Profile
+              <FaHouseUser />Profile
               <Link to="/profile" />
             </MenuItem>
             <MenuItem>
-              <FaDollarSign /> Costs Management
+              <FaDollarSign />Costs Management
               <Link to="/costs" />
             </MenuItem>
             <MenuItem>
-              <FaComment /> Report
+              <FaComment />Report
               <Link to="/report" />
             </MenuItem>
           </Menu>

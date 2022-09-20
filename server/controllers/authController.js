@@ -44,7 +44,7 @@ class authController {
       const { password, email } = req.body;
       const user = await User.findOne({ email });
       if (!user) {
-        return res.send({ message: `Bad credentials` });
+        return res.json({ message: `Bad credentials` });
       }
 
       const validPassword = bcrypt.compareSync(password, user.password);
