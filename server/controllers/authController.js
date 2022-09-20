@@ -65,14 +65,10 @@ class authController {
     return res.send(user);
   }
   async editUserData(req, res) {
-    const { name, password, email, currency } = req.body;
-    const hashPassword = bcrypt.hashSync(password, 7);
+    const { currency } = req.body;
     const updated = await User.findOneAndUpdate(
-      { _id: req.body.id },
+      { _id: req.body._id },
       {
-        name: name,
-        password: hashPassword,
-        email: email,
         currency: currency
       },
       {
@@ -90,8 +86,8 @@ class authController {
   }
   async deleteUser(req, res) {
     try {
-      await User.deleteOne({ _id: req.body.id });
-      res.send("deleted " + req.body.id);
+      await User.deleteOne({ _id: req.body._id });
+      res.send("deleted " + req.body._id);
     } catch (e) {
       return res.send({ err: e });
     }

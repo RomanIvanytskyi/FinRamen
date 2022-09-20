@@ -45,7 +45,7 @@ class transactionController {
   }
   async get(req, res) {
     try {
-      Transaction.find({}, (err, found) => {
+      Transaction.find({userId: req.body.userId}, (err, found) => {
         res.json(found);
       });
     } catch (e) {
