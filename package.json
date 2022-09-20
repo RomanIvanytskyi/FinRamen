@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "lint": "eslint --cache ./",
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "eslint": "^8.23.1",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1"
+  }
+}
