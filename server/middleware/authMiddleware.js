@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 
-module.exports = function (req, res, next) {
+module.exports = function authMiddleware (req, res, next) {
   const token = req.body.token;
   if (!token) {
     return res.send({ message: "No token" });
