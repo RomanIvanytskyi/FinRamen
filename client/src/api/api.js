@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const register = (data) => {
+export const registerApi = (data) => {
   return axios.post("http://localhost:3000/auth/register", {
     email: data.email,
     name: data.name,

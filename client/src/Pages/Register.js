@@ -5,46 +5,59 @@ import {
   CardFooter,
   Typography,
   Input,
-  Checkbox,
   Button,
 } from "@material-tailwind/react";
 import Page from "../Components/login/page";
 import Container from "../Components/login/container";
 import { useFormik } from "formik";
-import { loginApi } from "../api/api";
-import { connect } from "react-redux";
-import { login } from ".././store/reducers/reducer";
+import { registerApi } from "../api/api";
 
-function Login(props) {
+
+const Register = (props) => {
   const formik = useFormik({
     initialValues: {
+      name: "",
       password: "",
       email: "",
     },
     onSubmit: (values) => {
-      loginApi({ ...values }).then((res) => {});
+      registerApi({ ...values }).then((res) => {});
     },
   });
   return (
     <Page>
       <Container>
-        <Card className="w-96">
+        <Card>
           <CardHeader
             variant="gradient"
             className="mb-4
-            bg-indigo-500/70 grid h-28 place-items-center"
+             bg-indigo-500/70 grid h-28 place-items-center"
           >
             <Typography
               variant="h2"
               color="rgb(42,45,39)"
               style={{ marginBottom: 0 }}
             >
-              Login
+              Register
             </Typography>
           </CardHeader>
           <form onSubmit={formik.handleSubmit} noValidate>
             <CardBody>
-              <div className="mb-12 px-4 bg-bb">
+              <div className="mb-10 px-4">
+                <Input
+                  onChange={formik.handleChange}
+                  value={formik.values.name}
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="User Name"
+                  name="name"
+                  autoComplete="name"
+                />
+              </div>
+              <div className="mb-10 px-4">
                 <Input
                   onChange={formik.handleChange}
                   value={formik.values.email}
@@ -58,7 +71,7 @@ function Login(props) {
                   autoComplete="email"
                 />
               </div>
-              <div className="mb-8 px-4">
+              <div className="mb-4 px-4">
                 <Input
                   onChange={formik.handleChange}
                   value={formik.values.password}
@@ -73,36 +86,27 @@ function Login(props) {
                   autoComplete="current-password"
                 />
               </div>
-              <div className="mb-4 px-4">
-                <Checkbox
-                  backgroundColor="black"
-                  label="Remember Me"
-                  id="remember"
-                />
-              </div>
             </CardBody>
             <CardFooter>
-              <div className="flex justify-center bg-bb">
+              <div className="flex justify-center">
                 <Button
                   className=" mb-4 bg-indigo-500/70 hover:bg-cyan-600"
                   fullWidth={true}
                   type="submit"
-                  
                 >
-                  Sign In
+                  Sign Up
                 </Button>
               </div>
               <Typography variant="small" className="mt-6 flex justify-center">
-                Don't have an account?
+                Have an account?
                 <Typography
                   as="a"
-                  href="#signup"
                   variant="small"
                   color="blue"
                   className="ml-1 font-bold"
-                  onClick={()=>{props.setAccount(false)}}
+                  onClick={()=>{props.setAccount(true)}}
                 >
-                  Sign up
+                  Sign in
                 </Typography>
               </Typography>
             </CardFooter>
@@ -111,9 +115,6 @@ function Login(props) {
       </Container>
     </Page>
   );
-}
-const mapStateToProps = (state, ownProps) => ({
-  ...state,
-});
+};
 
-export default connect(mapStateToProps, { login })(Login);
+export default Register;
