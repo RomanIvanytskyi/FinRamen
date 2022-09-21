@@ -11,8 +11,7 @@ import Page from "../Components/login/page";
 import Container from "../Components/login/container";
 import { useFormik } from "formik";
 import { registerApi } from "../api/api";
-import { connect } from "react-redux";
-import { register } from ".././store/reducers/reducer";
+
 
 const Register = (props) => {
   const formik = useFormik({
