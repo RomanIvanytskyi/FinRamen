@@ -1,34 +1,45 @@
 const initialState = {
-    user: null,
-    isLogined: false,
-  };
-  
-  export const auth = (state = initialState, action) => {
-    switch (action.type) {
-      case "login": {
-        return {
-          ...state,
-          user: action.user,
-          isLogined: true
-        };
-      }
-      case "logout": {
-        return {
-          ...state,
-          user: null,
-          isLogined: false
-        };
-      }
-      default: {
-        return state;
-      }
+  user: null,
+  isLogined: false,
+};
+
+export const auth = (state = initialState, action) => {
+  switch (action.type) {
+    case "login": {
+      return {
+        ...state,
+        user: action.user,
+        isLogined: true,
+      };
     }
-  };
-  
-  export const login = (user) => (dispatch) => {
-    dispatch({ type: "login", user });
-  };
-  export const logout = () => (dispatch) => {
-    localStorage.removeItem("token");
-    dispatch({ type: "logout" });
-  };
+    case "logout": {
+      return {
+        ...state,
+        user: null,
+        isLogined: false,
+      };
+    }
+    case "register": {
+      return {
+        ...state,
+        user: action.user,
+        isLogined: true,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+export const login = (user) => (dispatch) => {
+  dispatch({ type: "login", user });
+};
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch({ type: "logout" });
+};
+
+export const register = (user) => (dispatch) => {
+  dispatch({ type: "register", user });
+};
