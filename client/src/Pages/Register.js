@@ -5,12 +5,10 @@ import {
   CardFooter,
   Typography,
   Input,
-  Checkbox,
   Button,
 } from "@material-tailwind/react";
 import Page from "../Components/login/page";
 import Container from "../Components/login/container";
-import { useState } from "react";
 import { useFormik } from "formik";
 import { registerApi } from "../api/api";
 import { connect } from "react-redux";
