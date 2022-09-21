@@ -56,7 +56,6 @@ const Register = (props) => {
                   label="User Name"
                   name="name"
                   autoComplete="name"
-                  autoFocus
                 />
               </div>
               <div className="mb-10 px-4">
@@ -71,7 +70,6 @@ const Register = (props) => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
                 />
               </div>
               <div className="mb-4 px-4">
@@ -104,10 +102,10 @@ const Register = (props) => {
                 Have an account?
                 <Typography
                   as="a"
-                  href="#signin"
                   variant="small"
                   color="blue"
                   className="ml-1 font-bold"
+                  onClick={()=>{props.setAccount(true)}}
                 >
                   Sign in
                 </Typography>
@@ -119,8 +117,5 @@ const Register = (props) => {
     </Page>
   );
 };
-const mapStateToProps = (state, ownProps) => ({
-  ...state,
-});
 
-export default connect(mapStateToProps, { register })(Register);
+export default Register;

@@ -56,7 +56,6 @@ function Login(props) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
                 />
               </div>
               <div className="mb-8 px-4">
@@ -88,6 +87,7 @@ function Login(props) {
                   className=" mb-4 bg-indigo-500/70 hover:bg-cyan-600"
                   fullWidth={true}
                   type="submit"
+                  
                 >
                   Sign In
                 </Button>
@@ -100,6 +100,7 @@ function Login(props) {
                   variant="small"
                   color="blue"
                   className="ml-1 font-bold"
+                  onClick={()=>{props.setAccount(false)}}
                 >
                   Sign up
                 </Typography>

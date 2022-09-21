@@ -19,13 +19,6 @@ export const auth = (state = initialState, action) => {
         isLogined: false,
       };
     }
-    case "register": {
-      return {
-        ...state,
-        user: action.user,
-        isLogined: true,
-      };
-    }
     default: {
       return state;
     }
@@ -40,6 +33,3 @@ export const logout = () => (dispatch) => {
   dispatch({ type: "logout" });
 };
 
-export const register = (user) => (dispatch) => {
-  dispatch({ type: "register", user });
-};
