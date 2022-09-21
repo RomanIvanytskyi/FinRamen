@@ -10,8 +10,9 @@ import {
 import Page from "../Components/login/page";
 import Container from "../Components/login/container";
 import { useFormik } from "formik";
-import { registerApi } from "../api/api";
-
+import { registerApi, meAPI } from "../api/api";
+import { login } from ".././store/reducers/reducer";
+import { connect } from "react-redux";
 
 const Register = (props) => {
   const formik = useFormik({
@@ -21,7 +22,14 @@ const Register = (props) => {
       email: "",
     },
     onSubmit: (values) => {
-      registerApi({ ...values }).then((res) => {});
+      registerApi({ ...values }).then((response) => {
+        localStorage.setItem("token", response.data.token);
+        meAPI(response.data.token).then((res) => {
+        if(res.data.user){
+          props.login(res.data.user);
+        }
+        });
+      });
     },
   });
   return (
@@ -104,7 +112,9 @@ const Register = (props) => {
                   variant="small"
                   color="blue"
                   className="ml-1 font-bold"
-                  onClick={()=>{props.setAccount(true)}}
+                  onClick={() => {
+                    props.setAccount(true);
+                  }}
                 >
                   Sign in
                 </Typography>
@@ -116,5 +126,8 @@ const Register = (props) => {
     </Page>
   );
 };
+const mapStateToProps = (state, ownProps) => ({
+  ...state,
+});
 
-export default Register;
+export default connect(mapStateToProps, { login })(Register);

@@ -11,7 +11,7 @@ import {
 import Page from "../Components/login/page";
 import Container from "../Components/login/container";
 import { useFormik } from "formik";
-import { loginApi } from "../api/api";
+import { loginApi, meAPI } from "../api/api";
 import { connect } from "react-redux";
 import { login } from ".././store/reducers/reducer";
 
@@ -22,7 +22,14 @@ function Login(props) {
       email: "",
     },
     onSubmit: (values) => {
-      loginApi({ ...values }).then((res) => {});
+      loginApi({ ...values }).then((response) => {
+        localStorage.setItem("token", response.data.token)
+        meAPI(response.data.token).then((res) => {
+          if(res.data.user){
+            props.login(res.data.user);
+          }
+        });
+      });
     },
   });
   return (
@@ -87,7 +94,6 @@ function Login(props) {
                   className=" mb-4 bg-indigo-500/70 hover:bg-cyan-600"
                   fullWidth={true}
                   type="submit"
-                  
                 >
                   Sign In
                 </Button>
@@ -100,7 +106,9 @@ function Login(props) {
                   variant="small"
                   color="blue"
                   className="ml-1 font-bold"
-                  onClick={()=>{props.setAccount(false)}}
+                  onClick={() => {
+                    props.setAccount(false);
+                  }}
                 >
                   Sign up
                 </Typography>

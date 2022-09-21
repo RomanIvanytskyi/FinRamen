@@ -28,5 +28,6 @@ export const deleteUser = (id) => {
 };
 
 export const meAPI = (token) => {
+  token = token || localStorage.getItem("token");
   return axios.post("http://localhost:3000/auth/me", { token });
 };

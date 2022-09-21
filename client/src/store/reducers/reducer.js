@@ -33,3 +33,8 @@ export const logout = () => (dispatch) => {
   dispatch({ type: "logout" });
 };
 
+
+export const me = () => (dispatch) => {
+  localStorage.getItem("token");
+  dispatch({ type: "login" });
+};

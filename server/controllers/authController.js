@@ -62,14 +62,14 @@ class authController {
   async me(req, res) {
     const userId = await req.user.id;
     const user = await User.findOne({ _id: userId });
-    return res.send(user);
+    return res.send({ user });
   }
   async editUserData(req, res) {
     const { currency } = req.body;
     await User.findOneAndUpdate(
       { _id: req.body._id },
       {
-        currency: currency
+        currency: currency,
       },
       {
         upsert: true,
