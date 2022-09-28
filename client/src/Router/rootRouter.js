@@ -8,6 +8,7 @@ import { login } from "../store/reducers/reducer";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { meAPI } from "../api/api";
+import UserSection from "../Components/userSection";
 const RootRouter = (props) => {
   useEffect(() => {
     meAPI().then((res) => {
@@ -19,6 +20,7 @@ const RootRouter = (props) => {
   return (
     <div>
       <SideBar />
+      <UserSection />
       <Routes key={1}>
         <Route path="/profile" element={<Profile />} exact></Route>
         <Route path="/" element={<Auth />}></Route>
