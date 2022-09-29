@@ -1,0 +1,9 @@
+.main {
+  background-color: rgb(119, 125, 227);
+  height: 100vh;
+}
+.Content{
+    padding: 15px;
+    margin-left: 190px;
+    align-content: center;
+}
