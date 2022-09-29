@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
-import {
-  Avatar,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from "@material-tailwind/react";
+import { Avatar } from "@material-tailwind/react";
 import "./pages.css";
 import "./profile.css";
 import Transactions from "../Components/Transactions";
