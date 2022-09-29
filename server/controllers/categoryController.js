@@ -1,7 +1,7 @@
 
 const Category = require("../models/Category");
 
-class transactionController {
+class categoryController {
   
   async create(req, res) {
     try {
@@ -57,4 +57,4 @@ class transactionController {
   }
 }
 
-module.exports = new transactionController();
+module.exports = new categoryController();
