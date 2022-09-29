@@ -6,11 +6,21 @@ import Report from "../Pages/report";
 import SideBar from "../Components/sideBar";
 import { login } from "../store/reducers/reducer";
 import { connect } from "react-redux";
-
-const rootRouter = () => {
+import { useEffect } from "react";
+import { meAPI } from "../api/api";
+import UserSection from "../Components/userSection";
+const RootRouter = (props) => {
+  useEffect(() => {
+    meAPI().then((res) => {
+      if(res.data.user){
+        props.login(res.data.user);
+      }
+    });
+  }, []);
   return (
     <div>
       <SideBar />
+      <UserSection />
       <Routes key={1}>
         <Route path="/profile" element={<Profile />} exact></Route>
         <Route path="/" element={<Auth />}></Route>
@@ -24,4 +34,4 @@ const mapStateToProps = (state, ownProps) => ({
   ...state,
 });
 
-export default connect(mapStateToProps, { login })(rootRouter);
+export default connect(mapStateToProps, { login })(RootRouter);
