@@ -1,0 +1,37 @@
+.container {
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 2.4fr 0.2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+
+  grid-template-areas:
+    "Balance . ."
+    "Add-Transaction Add-Transaction Transaction-list"
+    "Add-Transaction Add-Transaction .";
+}
+
+.Balance {
+  grid-area: Balance;
+}
+
+.Add-Transaction {
+  display: flex;
+  position: relative;
+  grid-area: Add-Transaction;
+
+}
+
+.Transaction-list {
+  grid-area: Transaction-list;
+}
+.addCosts{
+  padding-right: 25px;
+  height:300px;
+
+}
+.text{
+  background-color: rgb(21, 103, 175);
+  color:rgb(255,211,49)
+}
