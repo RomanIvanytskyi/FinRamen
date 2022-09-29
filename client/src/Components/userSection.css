@@ -1,0 +1,19 @@
+.userSection {
+  background-color: rgb(89, 64, 104);
+  color: rgb(255,211,49);
+  font-family: Century Gothic;
+  padding: 10px;
+  text-align: center;
+  text-align: right;
+  font-size: medium;
+
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+}
+.userAvatar{
+  padding: 5px;
+    margin-left: 50px;
+    position: relative;
+}
