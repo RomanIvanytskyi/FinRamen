@@ -6,17 +6,21 @@ const Category = new Schema({
     unique: true,
     required: true,
   },
+  type: {
+    type: String,
+    niqe: false,
+    required: true,
+  },
   description: {
     type: String,
     unique: false,
     required: true,
   },
-  createdBy:{
+  createdBy: {
     type: String,
     unique: false,
-    required: true,
-  }
-
+    required: false,
+  },
 });
 
 module.exports = model("Category", Category);
