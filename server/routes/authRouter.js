@@ -7,7 +7,7 @@ const authMiddleware = require("../middleware/authMiddleware")
 router.post("/login", controller.login);
 router.post("/register", controller.register);
 router.post("/me",authMiddleware, controller.me);
-router.put("/update", controller.editUserData)
-router.delete("/delete", controller.deleteUser)
+router.put("/update",authMiddleware, controller.editUserData)
+router.delete("/delete",authMiddleware, controller.deleteUser)
 
 module.exports = router;
