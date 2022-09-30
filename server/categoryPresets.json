@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Payment day",
+    "type": "income",
+    "description": "Payment day from work",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Bonus payment",
+    "type": "income",
+    "description": "Bonus payment from work",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Present",
+    "type": "income",
+    "description": "Money from present",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Debt",
+    "type": "income",
+    "description": "Returned debt",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Buying products",
+    "type": "costs",
+    "description": "Returned debt",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Utilities/Internet",
+    "type": "costs",
+    "description": "Payment of utility services",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Entertaiment",
+    "type": "costs",
+    "description": "Entertainment and other leisure activities",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Subscriptions",
+    "type": "costs",
+    "description": "Youtube, Netflix and other subscriptions",
+    "createdBy": "admin"
+  },
+  {
+    "name": " Accessories",
+    "type": "costs",
+    "description": "Clothes, shoes and other accessories",
+    "createdBy": "admin"
+  },
+  {
+    "name": "Cafe and restaurants",
+    "type": "costs",
+    "description": "Food in restaurants",
+    "createdBy": "admin"
+  }
+]
