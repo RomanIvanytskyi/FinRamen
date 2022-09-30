@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { Avatar } from "@material-tailwind/react";
@@ -8,11 +7,6 @@ import "./profile.css";
 import Transactions from "../Components/Transactions";
 
 const Profile = (props) => {
-  const [open, setOpen] = useState(0);
-
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
 
   return (
     <div className="main">
