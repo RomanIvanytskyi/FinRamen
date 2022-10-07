@@ -59,6 +59,26 @@ class transactionController {
       return res.send({ err: e });
     }
   }
+  async search(req, res) {
+  
+    if (req.body && req.body.userId) {
+      try {
+        Transaction.find({ userId: { $regex: req.body.userId } }, (err, found) => {
+          found ? res.send({ transactions: found }) : res.send({ data: err });
+        });
+      } catch (e) {
+        res.send({ data: e });
+      }
+    } else {
+      try {
+        Transaction.find({}, (err, found) => {
+          found ? res.send({ transactions: found }) : res.send({ data: err });
+        });
+      } catch (e) {
+        res.send({ data: e });
+      }
+    }
+  }
 }
 
 module.exports = new transactionController();
