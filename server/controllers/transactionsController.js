@@ -1,8 +1,7 @@
 const Transaction = require("../models/Transaction");
-const moment = require('moment');
+const moment = require("moment");
 
 class transactionController {
-  
   async create(req, res) {
     let now = moment().format("DD/MM/YYYY HH:mm");
     try {
@@ -11,7 +10,7 @@ class transactionController {
         money_operations: req.body.money_operations,
         description: req.body.description,
         type: req.body.type,
-        created: now
+        created: now,
       });
       await transaction.save();
       res.send(transaction);
@@ -27,7 +26,7 @@ class transactionController {
         money_operations: req.body.money_operations,
         description: req.body.description,
         type: req.body.type,
-        created: req.body.created
+        created: req.body.created,
       },
       {
         upsert: true,
@@ -44,7 +43,7 @@ class transactionController {
   }
   async get(req, res) {
     try {
-      Transaction.find({userId: req.body.userId}, (err, found) => {
+      Transaction.find({ userId: req.body.userId }, (err, found) => {
         res.json(found);
       });
     } catch (e) {
@@ -57,6 +56,30 @@ class transactionController {
       res.send("deleted " + req.body.id);
     } catch (e) {
       return res.send({ err: e });
+    }
+  }
+  async search(req, res) {
+    if (req.body && req.body?.userId) {
+      try {
+        Transaction.find(
+          { userId: req.body.userId  },
+          (err, found) => {
+            return found
+              ? res.send({ transactions: found })
+              : res.send({ data: err });
+          }
+        );
+      } catch (e) {
+        return res.send({ data: e });
+      }
+    } else {
+      try {
+        Transaction.find({}, (err, found) => {
+          found ? res.send({ transactions: found }) : res.send({ data: err });
+        });
+      } catch (e) {
+        return res.send({ data: e });
+      }
     }
   }
 }
