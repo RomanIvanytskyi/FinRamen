@@ -6,12 +6,16 @@ const authRouter = require("./routes/authRouter");
 const transactionRouter = require("./routes/transactionRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const PORT = process.env.PORT || 5000;
+const cors = require('cors')
+
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/transaction", transactionRouter);
 app.use("/auth", authRouter);
 app.use("/category", categoryRouter);
+
 
 const start = () => {
   try {

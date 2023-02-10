@@ -4,6 +4,8 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import "./Transactions.css";
+
 export default function Transactions() {
     const [open, setOpen] = useState(0);
 
@@ -11,7 +13,7 @@ export default function Transactions() {
       setOpen(open === value ? 0 : value);
     };
   return (
-      <div>
+      <div className="TransactionsBlock">
         Recently created
         <Accordion open={open === 1}>
           <AccordionHeader onClick={() => handleOpen(1)}>

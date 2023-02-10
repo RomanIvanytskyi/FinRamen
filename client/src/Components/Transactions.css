@@ -1,0 +1,13 @@
+.TransactionsBlock{
+    margin-left: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(221, 208, 184);
+    opacity: 75%;
+    height: 100%;
+    z-index: 1;
+}
+.currPicker{
+    margin-bottom: 20px;
+}

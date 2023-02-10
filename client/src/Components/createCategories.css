@@ -1,0 +1,17 @@
+tr{
+    background-color: #cec6b9!important;
+}
+tr :hover{
+    background-color: #e0d1ba!important;
+}
+
+.currDrop{
+    background-color: #cec6b9!important;
+}
+.currDrop ul{
+    background-color: #cec6b9!important;
+}
+
+.opt{
+    display: flex;
+}

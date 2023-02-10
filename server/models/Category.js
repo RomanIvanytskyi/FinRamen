@@ -8,13 +8,13 @@ const Category = new Schema({
   },
   type: {
     type: String,
-    niqe: false,
+    unique: false,
     required: true,
   },
   description: {
     type: String,
     unique: false,
-    required: true,
+    required: false,
   },
   createdBy: {
     type: String,

@@ -1,8 +1,6 @@
-
 const Category = require("../models/Category");
 
 class categoryController {
-  
   async create(req, res) {
     try {
       const category = new Category({
@@ -40,7 +38,7 @@ class categoryController {
   }
   async get(req, res) {
     try {
-        Category.find({id: req.body.id}, (err, found) => {
+      Category.find({ id: req.body.id }, (err, found) => {
         res.json(found);
       });
     } catch (e) {
@@ -50,7 +48,7 @@ class categoryController {
   async delete(req, res) {
     try {
       await Category.deleteOne({ _id: req.body.id });
-      res.send("deleted " + req.body.id);
+      res.send(req.body.id);
     } catch (e) {
       return res.send({ err: e });
     }
