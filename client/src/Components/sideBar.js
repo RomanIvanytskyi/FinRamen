@@ -31,43 +31,53 @@ const headerStyle = {
 };
 const SideBar = (props) => {
   const [sideCollapsed, setSideCollapsed] = useState(true);
+
+  const handleParentClick = event => {
+    event.preventDefault();
+
+    if (event.target === event.currentTarget) {
+      console.log('parent clicked');
+      toggleSideCollapsed()
+    }
+  };
+
   const toggleSideCollapsed = useCallback(() => {
     setSideCollapsed((collapsed) => !collapsed);
   }, [setSideCollapsed]);
 
   return (
     <div className="mainbar">
-      <ProSidebar onClick={toggleSideCollapsed} collapsed={sideCollapsed}>
+      <ProSidebar collapsed={sideCollapsed}>
         <SidebarHeader style={headerStyle}>
           <FaPiggyBank style={{ color: "rgb(255,211,49)" }} />
-          FinRamen
+          {sideCollapsed ? "" : "FinRamen"}
         </SidebarHeader>
-        <SidebarContent>
+        <SidebarContent onClick={handleParentClick}>
           <Menu iconShape="circle">
             <MenuItem>
               <FaDoorOpen />
-              Auth
+              {sideCollapsed ? "" : "Auth"}
               <Link to="/" />
             </MenuItem>
             <MenuItem>
               <FaHouseUser />
-              Profile
+              {sideCollapsed ? "" : "Profile"}
               <Link to="/profile" />
             </MenuItem>
             <MenuItem>
               <FaDollarSign />
-              Costs Management
+              {sideCollapsed ? "" : "Costs Management"}
               <Link to="/costs" />
             </MenuItem>
             <MenuItem>
               <FaComment />
-              Report
+              {sideCollapsed ? "" : "Report"}
               <Link to="/report" />
             </MenuItem>
           </Menu>
         </SidebarContent>
         <SidebarFooter style={{ textAlign: "center" }}>
-          {props.auth?.user?.name || "FinRamen"}
+          {sideCollapsed ? "FinRamen" : props.auth?.user?.name || "FinRamen"}
         </SidebarFooter>
       </ProSidebar>
     </div>

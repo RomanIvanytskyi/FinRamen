@@ -6,6 +6,9 @@ import { Avatar } from "@material-tailwind/react";
 import "./pages.css";
 import "./profile.css";
 import Transactions from "../Components/Transactions";
+import CustomTable from "../Components/customCategories";
+import CurrencyBoard from "../Components/CurrencyBoard";
+import "../Components/Transactions.css";
 
 const Profile = (props) => {
   const [open, setOpen] = useState(0);
@@ -29,11 +32,14 @@ const Profile = (props) => {
             <div className="User-info">
               {" "}
               Informations about user and balance
+              <CurrencyBoard />
+              <CustomTable className="currPicker" />
             </div>
             <div className="Transactions">
               <Transactions />
             </div>
-            <div class="Charts">Charts will be added soon</div>
+            <div class="Charts"> </div>
+           
           </div>
         </div>
       ) : (
